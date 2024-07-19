@@ -14,7 +14,9 @@ const Navbar = () => {
   };
   return (
     <NavbarContainer>
-      <Logo>Recipe App</Logo>
+      <Link to="/">
+        <Logo>Recipe App</Logo>
+      </Link>
       <div>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/create-recipe">Create Recipe</NavLink>
@@ -22,7 +24,12 @@ const Navbar = () => {
         {!cookies.access_token ? (
           <NavLink to="/auth">Login/Register</NavLink>
         ) : (
-          <button onClick={logout}>Logout</button>
+          <button
+            style={{ backgroundColor: "#646cff", color: "white" }}
+            onClick={logout}
+          >
+            Logout
+          </button>
         )}
       </div>
     </NavbarContainer>

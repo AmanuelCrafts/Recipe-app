@@ -5,12 +5,14 @@ import Auth from "./pages/Auth";
 import CreateRecipe from "./pages/createRecipe";
 import SavedRecipes from "./pages/savedRecipes";
 import Navbar from "./components/Navbar";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <>
       <Router>
         <Navbar />
+        <ToastContainer />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/auth" element={<Auth />} />

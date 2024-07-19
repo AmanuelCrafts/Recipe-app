@@ -3,6 +3,8 @@ import styled from "styled-components";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Auth = () => {
   return (
@@ -19,7 +21,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const [_, setCookies] = useCookies(["access_token"]);
-
   const navigate = useNavigate();
 
   const onSubmit = async (event) => {
@@ -32,10 +33,14 @@ const Login = () => {
 
       setCookies("access_token", response.data.token);
       window.localStorage.setItem("userID", response.data.userID);
+      toast.success("Login successful", { autoClose: 3000 });
 
       navigate("/");
     } catch (err) {
       console.error(err);
+      toast.error(
+        `Login failed: ${err.response?.data?.message || "An error occurred"}`
+      );
     }
   };
 
@@ -62,9 +67,14 @@ const Register = () => {
         username,
         password,
       });
-      alert("Registration Completed! Now login");
+      toast.success("Registration completed! Now login", { autoClose: 3000 });
     } catch (err) {
       console.error(err);
+      toast.error(
+        `Registration failed: ${
+          err.response?.data?.message || "An error occurred"
+        }`
+      );
     }
   };
 
