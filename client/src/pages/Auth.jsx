@@ -26,7 +26,7 @@ const Login = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/auth/login", {
+      const response = await axios.post("https://recipe-app-backend-e1cw.onrender.com/auth/login", {
         username,
         password,
       });
